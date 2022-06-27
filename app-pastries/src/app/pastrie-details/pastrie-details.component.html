@@ -1,0 +1,25 @@
+<div class="col-sm-8 pastrie">
+    <div class="card" *ngIf="pastrie">
+        <div class="card-header">
+            {{ pastrie?.ref }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{pastrie.name}}</h5>
+            <img class="cake" src={{pastrie.url}}>
+            <button class="btn btn-primary" (click)="onSelect2(selectedIngre)" *ngIf="!ascend">asc</button>
+            <button (click)="onSelect(selectedIngre)" class=" btn btn-primary " *ngIf="ascend">desc</button>
+            <button (click)="onChoice(pastrie._id, 'Priority')" class=" btn btn-primary ">Choice</button>
+            <button (click)="onChoice(pastrie._id, 'Unwanted')" class=" btn btn-primary ">UnChoice</button>
+            <span class="btn-primary badge bg-info" *ngIf="pastrie.choice == 'Unwanted' "> Unwanted </span>
+            <span class="btn-primary badge bg-info" *ngIf="pastrie.choice == 'Priority' "> Priority </span>
+        </div>
+        <div class=" card ">
+            <h3 class="card-body ">
+                Liste des Ingrédients :
+            </h3>
+        </div>
+        <div class=" card ">
+            <div class="card-body " *ngFor="let ingredient of ingredients">
+                {{ingredient}}
+            </div>
+        </div>

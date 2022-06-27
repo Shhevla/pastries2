@@ -1,0 +1,17 @@
+<div class="card" *ngIf="pastrie">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ pastrie.name }}</h5>
+      <p class="card-text">{{pastrie.description }}</p>
+      <p>Quantité disponible : {{ pastrie.quantity || 0 }} </p>
+      <p>Like: {{ pastrie.like || 'no Like' }}</p>
+      <ul *ngIf="pastrie.tags" class="list-inline">
+        <li class="list-inline-item" *ngFor="let word of pastrie.tags">
+          <span class="badge bg-info">{{ word }}</span>
+        </li>
+      </ul>
+      <img *ngIf="pastrie.url" width="300" src="{{pastrie.url}}" class="rounded mx-auto d-block" alt="...">
+    </div>
+  </div>

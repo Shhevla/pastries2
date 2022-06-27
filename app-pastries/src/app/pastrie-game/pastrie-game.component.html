@@ -1,0 +1,18 @@
+<div class="row content">
+  <div class="col-sm-12 pastrie">
+    <div class="card">
+      <div class="card-header">
+          Jouer au Yams pour gagner des pâtiseries
+      </div>
+      <div class="card-body">
+        <button [disabled]="status === false" (click)="onThrowDice()" class=" btn btn-primary ">
+            Yams
+        </button>
+        {{ response | json }}
+      </div>
+      <!-- .card -->
+      <!-- Pagination -->
+    </div>
+    <!-- .pastrie -->
+  </div>
+</div>
