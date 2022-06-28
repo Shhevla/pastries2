@@ -12,7 +12,7 @@ export class GuardService implements CanActivate {
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): any | boolean {
 
-      // TODO ...
+      route.params
       return false;
   }
 }

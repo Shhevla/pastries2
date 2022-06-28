@@ -55,3 +55,9 @@ export type ResponseYam = {
     //pastries: Observable<Pastrie[]>,
     count : number
 }
+
+export interface Users  {
+    email : string,
+    password : string,
+    token ?: string
+}
