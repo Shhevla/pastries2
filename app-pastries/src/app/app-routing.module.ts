@@ -6,6 +6,7 @@ import { PastrieLoginComponent } from './pastrie-login/pastrie-login.component';
 import { PastriesComponent } from './pastries/pastries.component';
 import { PastrieGameComponent } from './pastrie-game/pastrie-game.component'
 import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
+import { GuardService } from './guard-service.service';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate:[GuardService],
     component: DashboardComponentComponent
   },
   {

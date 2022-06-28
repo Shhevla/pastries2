@@ -16,6 +16,8 @@ export const environment = {
   nbPastriesYams : 3,
   nbPastriesSquare : 2,
   nbPastriesDouble : 1,
+  isLogin : false,
+  Users : "",
   pastriesUrl : 'http://localhost:8000/pastries',
   pastrieUrl : 'http://localhost:8000/pastrie',
   ingredientsUrl : 'http://localhost:8000/ingredients',

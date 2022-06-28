@@ -1,32 +1,31 @@
 <div class="container-fuild principal">
 
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand">{{ title }}</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-              aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand">{{ title }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/pastries" routerLinkActive="active">Home
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/pastries" routerLinkActive="active">Home
             </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">
+                </li>
+                <li class="nav-item active">
+                    <a *ngIf="log == false" class="nav-link" routerLink="/login" routerLinkActive="active">
               Se connecter
             </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/game" routerLinkActive="active">
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/game" routerLinkActive="active">
               Game
             </a>
-          </li>
-        </ul>
-      </div>
+                </li>
+            </ul>
+        </div>
     </nav>
-  
+
     <div>
-      <router-outlet ></router-outlet>
+        <router-outlet></router-outlet>
     </div>
-  </div>
+</div>

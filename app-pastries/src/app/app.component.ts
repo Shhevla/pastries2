@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app-yams';
+  log = env.isLogin;
+
 }

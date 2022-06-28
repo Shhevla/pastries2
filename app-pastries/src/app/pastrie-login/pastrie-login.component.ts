@@ -25,7 +25,7 @@ export class PastrieLoginComponent implements OnInit {
     
     this.checkPromise.then(() => {
       this.checkAuth = true;
-      this.Router.navigate(['/dashboard', this.modelUser.email]);
+      this.Router.navigate(['/dashboard']);
     }).catch (() => {
       this.checkAuth = false;
     });

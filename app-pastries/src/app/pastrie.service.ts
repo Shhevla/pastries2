@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Subject, Observable, throwError } from 'rxjs';
 import { map, catchError, filter  } from 'rxjs/operators';
 
-import { Pastrie, List, CHOICE } from './pastrie';
+import { Pastrie, List, CHOICE, Users } from './pastrie';
 //import { INGREDIENTS_LISTS, PASTRIES } from './mock-pastries';
 import { environment as env } from 'src/environments/environment';
 
@@ -60,6 +60,13 @@ export class PastrieService {
       map(pastries => pastries.sort((p1, p2) => p1.order - p2.order)),
       map(pastries => pastries.slice(start, end))
     )
+  }
+
+  UsersArray(): Promise<Users[]> {
+    const isPromise = new Promise<Users[]>((resolve, reject) => {
+      this.http.get<Users[]>("http://localhost:8000/users").subscribe(data => {resolve(data)});
+    });
+    return isPromise;
   }
 
   wordPastries(str: string): Pastrie[] {

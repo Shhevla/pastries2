@@ -1,32 +1,44 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Users } from './pastrie';
-import { map, Observable } from 'rxjs';
+import { map, Observable, firstValueFrom } from 'rxjs';
+import { PastrieService } from './pastrie.service';
+import { environment as env } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  constructor(private http : HttpClient) { }
+  isLogin : boolean = false;
+  whoIsLogin: string = "";
+  constructor(private http : HttpClient, private ps : PastrieService) { }
 
-  // méthode d'authentification
-  auth(email: string, password: string): boolean {
-    if (email == "admin" && password == "00000")
-      return true; // TODO
-    else
-      return false;
-}
-  login(email: string, password: string): Promise<any> {
-    
+  async login(email: string, password: string): Promise<any> {
+    let users: Users[] = [];
+    await this.ps.UsersArray().then(data => {users = data});
     const isPromise = new Promise<any>((resolve, reject) => {
-      const obse: Observable<Users[]> = this.http.get<Users[]>("http://localhost:8000/users");
-      obse.pipe(map(data => { data = data.filter(word => word.email == email && word.password == password); console.log(data);}));
-      if ((email == "admin") && (password == "00000")) {
-        resolve("Accept");
-      } else {
-        reject("false");
+      for (let i = 0; i < users.length ; i++) {
+        if ((email == users[i].email) && (password == users[i].password)) {
+          env.isLogin = true;
+          env.Users = users[i].email;
+          resolve("Accept");
+        }
       }
+        reject("false");
     });
     return(isPromise);
+  }
+
+  isUserLogin(): boolean {
+    return env.isLogin;     
+  }
+  isNameLogin(): string {
+    return env.Users;
+  }
+
+  logout(): void {
+    env.Users = "";
+    env.isLogin = false;
   }
 }

@@ -11,8 +11,10 @@ export class GuardService implements CanActivate {
   canActivate(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): any | boolean {
-
-      route.params
-      return false;
+        if (!this.aS.isUserLogin()) {
+          this.router.navigate(['/login']);
+          return false;
+         } else
+          return true;
   }
 }
